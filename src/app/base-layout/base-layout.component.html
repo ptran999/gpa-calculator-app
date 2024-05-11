@@ -1,0 +1,31 @@
+<!--
+    Title: base-layout.component.html
+    Author: Phuong Tran
+    Date: 04/28/2024
+    Description: Exercise 7.2 - Reactive Forms.
+-->
+
+<mat-toolbar color="primary">
+  <mat-toolbar>
+    <div class="logo"></div>
+      <img src="./assets/gpa-calculator-app.png">
+    <div style="width: 80%">
+      <div fxLayout="row wrap" fxLayoutAlign="end start">
+        <button mat-button routerLink="/">Home</button>
+        <button mat-button (click)="signOut()">Sign Out</button>
+      </div>
+    </div>
+  </mat-toolbar>
+</mat-toolbar>
+<br>
+<div fxLayout="row wrap">
+  <div fxFlex>
+    <mat-card class="main-container">
+      <mat-card-title>{{ assignment }}</mat-card-title>
+      <br /><br />
+      <mat-card-content>
+        <router-outlet></router-outlet>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

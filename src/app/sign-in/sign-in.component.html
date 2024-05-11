@@ -1,0 +1,46 @@
+<!--
+    Title: sign-in.component.html
+    Author: Phuong Tran
+    Date: 05/03/2024
+    Description: Exercise 7.3 Form Validation.
+-->
+
+<div fxLayout="column">
+  <div fxFlex>
+    <mat-card class="mat-elevation-z8 sign-in">
+      <mat-card-title>Student Sign In</mat-card-title>
+      <mat-card-subtitle>
+        You Must Enter a Valid Student ID to Proceed.
+      </mat-card-subtitle>
+      <mat-card-content>
+        <div class="msg-error" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+        <div *ngIf="signinForm.controls['studentId'].errors && signinForm.controls['studentId'].touched">
+          <div class="msg-error">Student ID must be a numeric value.</div>
+        </div>
+
+        <mat-card class="mat-elevation-z0" fxLayout="column">
+          <form [formGroup]="signinForm" (ngSubmit)="onSubmit(); signinForm.reset()">
+            <mat-card-content>
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label for="studentId">
+                  Student Id
+                </mat-label>
+                <input type="text" matInput formControlName="studentId"
+                id="studentId" name="studentId" required>
+              </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button type="submit" fxFlex mat-raised-button color="primary"
+              [disabled]="!signinForm.valid">
+                Submit
+              </button>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
